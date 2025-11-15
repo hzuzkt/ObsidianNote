@@ -122,3 +122,25 @@ git push -u origin main
 ## 5、常见问题
 
 如过遇到配置完上面后仍无法自动同步，则需要补充进行如下操作
+**步骤 一：生成 SSH 密钥**
+ssh-keygen -t ed25519 -C "your_email@example.com"
+// 一直按回车使用默认路径
+
+**步骤 二：将公钥添加到 GitHub**
+// 复制公钥内容
+cat ~/.ssh/id_ed25519.pub
+
+1. 登录 GitHub → Settings → SSH and GPG keys
+2. 点击 "New SSH key"
+3. 粘贴公钥内容
+    
+**步骤 三：修改远程仓库地址为 SSH**
+// 进入你的 Obsidian 仓库目录
+cd /path/to/your/obsidian-vault
+
+// 修改远程仓库 URL
+git remote set-url origin git@github.com:hzuzkt/ObsidianNote.git
+
+// 验证连接
+ssh -T git@github.com
+
